@@ -1,6 +1,8 @@
 <?php
 
-function getStatus($nation, $proxy, $url, $referer, $agent, $header, $timeout, $display, $soldout_phrase) {
+function getStatus($type, $nation, $proxy, $url, $referer, $agent, $header, $timeout, $display, $soldout_phrase) {
+
+    if(!$type) { $type = "n4_16gb"; }
 
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
@@ -44,7 +46,20 @@ function getStatus($nation, $proxy, $url, $referer, $agent, $header, $timeout, $
 
 // VARIABLES DEFINITION
 
-$url = "https://play.google.com/store/devices/details?id=nexus_4_16gb";
+$type = $_GET['type'];
+
+if(!$type) { $type = "n4_16gb"; }
+
+$url['n4_16gb'] = "https://play.google.com/store/devices/details?id=nexus_4_16gb";
+$url['n4_8gb'] = "https://play.google.com/store/devices/details?id=nexus_4_8gb";
+
+$url['n7_32gb_3g'] = "https://play.google.com/store/devices/details?id=nexus_7_32gb_hspa_att";
+$url['n7_32gb'] = "https://play.google.com/store/devices/details?id=nexus_7_32gb";
+$url['n7_16gb'] = "https://play.google.com/store/devices/details?id=nexus_7_16gb";
+
+$url['n10_32gb'] = "https://play.google.com/store/devices/details?id=nexus_10_32gb";
+$url['n10_16gb'] = "https://play.google.com/store/devices/details?id=nexus_10_16gb";
+
 
 $referer = "http://www.google.com/";
 $agent = "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.8) Gecko/2009032609 Firefox/3.0.8";
@@ -63,6 +78,6 @@ $nation = $_GET['nation'];
 
 // EXECUTION
 
-echo getStatus($nation,$proxylist[$nation],$url,$referer,$agent,1,$timeout,$display,$soldout_phrase[$nation]);
+echo getStatus($type,$nation,$proxylist[$nation],$url[$type],$referer,$agent,1,$timeout,$display,$soldout_phrase[$nation]);
 
 ?>
