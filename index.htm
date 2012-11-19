@@ -1,0 +1,58 @@
+<head>
+<title>N4 World Availability Checker (Test)</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+	var loader_gfx = '<span style="margin-left: 10px; display:inline;"><img src="images/ajax-loader.gif" alt="Caricamento.."></span>';
+	$("#usa, #uk, #spain, #germany, #france").html(loader_gfx);
+	 
+	$("#usa").load("loader.php?nation=usa&timeout=0");
+
+	$("#uk").load("loader.php?nation=uk&timeout=25");
+
+	$("#spain").load("loader.php?nation=spain&timeout=25");
+
+	$("#germany").load("loader.php?nation=germany&timeout=25");
+
+	$("#france").load("loader.php?nation=france&timeout=25");
+
+		
+/* 		$("#refresh, #dorefresh").live('click', function() {
+		
+	$("#usa").load("loader.php?nation=usa&timeout=0");
+ 
+	$("#uk").load("loader.php?nation=uk&timeout=25");
+
+	$("#spain").load("loader.php?nation=spain&timeout=25");
+
+	$("#germany").load("loader.php?nation=germany&timeout=25");
+
+	$("#france").load("loader.php?nation=france&timeout=25");
+			
+		}); */
+
+	
+	});
+</script>
+
+</head>
+<body style="background: #c1c1c1; font-family: arial,sans-serif; font-size: small;">
+<div style="background: #e1e1e1; padding: 10px; width: 700px; margin-left: auto; margin-right: auto; text-align: center; margin-top: 15px;">
+<div style="background: #c1c1c1; padding: 5px;">
+<strong>Nexus 4 16gb Play Store Availability Checker</strong><br>
+<i>Hit refresh (F5) if you get error on the status  or wait for a fix.</i>
+</div>
+<br>
+<div style="text-align: left;">
+USA: <span id="usa">		</span><br>
+UK: <span id="uk">		</span><br>
+SPAIN: <span id="spain">		</span><br>
+GERMANY: <span id="germany">		</span><br>
+FRANCE: <span id="france">		</span><br>
+</div>
+<br>
+<div style="background: #eaeaea; padding: 5px; float: right;">
+<a href="https://twitter.com/ldx00" style="decoration: none;">@ldx00</a>
+</div>
+</div>
+</body>
