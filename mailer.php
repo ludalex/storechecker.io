@@ -86,6 +86,8 @@ $soldout_phrase['uk'] = "Sold out";
 $soldout_phrase['spain'] = "Agotado";
 $soldout_phrase['germany'] = "Ausverkauft";
 $soldout_phrase['france'] = "hardware-sold-out";
+$soldout_phrase['canada'] = "hardware-sold-out";
+
 
 // EXECUTION
 
@@ -94,6 +96,8 @@ getStatusForMail("uk",$proxylist['uk'],$url,$referer,$agent,1,30,0,$soldout_phra
 getStatusForMail("spain",$proxylist['spain'],$url,$referer,$agent,1,30,0,$soldout_phrase['spain']);
 getStatusForMail("germany",$proxylist['germany'],$url,$referer,$agent,1,30,0,$soldout_phrase['germany']);
 getStatusForMail("france",$proxylist['france'],$url,$referer,$agent,1,30,0,$soldout_phrase['france']);
+getStatusForMail("canada",$proxylist['canada'],$url,$referer,$agent,1,30,0,$soldout_phrase['canada']);
+
 
 //mail("ludalex@gmail.com", "yup", "cron working.", "From:$aemail\r\nContent-Type: text/html; charset=iso-8859-1"); 
 

@@ -3,7 +3,7 @@
 function getStatus($type, $nation, $proxy, $url, $referer, $agent, $header, $timeout, $display, $soldout_phrase) {
 
     if(!$type) { $type = "n4_16gb"; }
-
+	
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_HEADER, $header);
@@ -44,7 +44,7 @@ function getStatus($type, $nation, $proxy, $url, $referer, $agent, $header, $tim
 				return "<b>IN STOCK!</b>"; }
 		}
 	} else {
-			return "Error: ". $result['ERR'];
+			return "Error: try reloading.";
 		 
 	}
 }
@@ -90,10 +90,35 @@ $soldout_phrase['japan'] = "hardware-sold-out";
 $soldout_phrase['australia'] = "hardware-sold-out";
 $soldout_phrase['canada'] = "hardware-sold-out";
 
+// CACHING
 
+$page_id = 'nation='. $nation . '&timeout=' . $timeout . '&type=' . $type . '.temp';
+$timeout = 120;
+$path = "cache/".$page_id;
+
+if(!file_exists("cache/"))
+mkdir("cache/");
+
+if(file_exists($path) and filemtime($path) + $timeout > time()) {
+	$result = readfile($path);
+	if($result)
+		exit();
+}
+
+set_time_limit(0);
+ob_start();
 
 // EXECUTION
 
-echo getStatus($type,$nation,$proxylist[$nation],$url[$type],$referer,$agent,1,$timeout,$display,$soldout_phrase[$nation]);
+echo $status = getStatus($type,$nation,$proxylist[$nation],$url[$type],$referer,$agent,1,$timeout,$display,$soldout_phrase[$nation]);
 
+$output = ob_get_flush();
+
+if($status != "Error: try reloading.") { 
+
+	$fp = fopen($path, "w");
+	fwrite($fp, $output, strlen($output));
+	fclose($fp);
+
+	}
 ?>
