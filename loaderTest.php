@@ -34,14 +34,14 @@ function getStatus($type, $nation, $proxy, $url, $referer, $agent, $header, $tim
 		$outof = strpos($html, $soldout_phrase);
 
 		if ($outof) { 
-			return "<b>Out of stock.</b>"; } 
+			return "<span style=\"color:red; font-weight:bold\">Out of stock.</span>"; } 
 		else {
 			$unavailable = strpos($html, "hardware-unavailable");
 
 			if($unavailable) {
-				return "<b>Not available for sale yet.</b>"; 
+				return "<span style=\"font-weight:bold\">Not available for sale yet.</span>"; 
 			} else {
-				return "<b>IN STOCK!</b>"; }
+				return "<span style=\"color:green; font-weight:bold\">IN STOCK!</span>"; }
 		}
 	} else {
 			return "Error: try reloading.";
