@@ -1,5 +1,4 @@
 # Store Checker 
-=============
 ### preview on [storechecker.io](http://storechecker.io)
 -------------
 Requirements: a webserver, PHP 5.5, Python 2.7, sqlite modules for Python and PHP, cron.
